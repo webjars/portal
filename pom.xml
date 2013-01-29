@@ -41,7 +41,7 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>1.0rc2</upstream.version>
+        <upstream.version>1.0rc3</upstream.version>
         <upstream.url>https://raw.github.com/flowersinthesand/portal/${upstream.version}</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
     </properties>
@@ -62,6 +62,18 @@
                         <configuration>
                             <url>${upstream.url}</url>
                             <fromFile>portal.js</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-min-js</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url}</url>
+                            <fromFile>portal.min.js</fromFile>
                             <toDir>${destDir}</toDir>
                         </configuration>
                     </execution>
